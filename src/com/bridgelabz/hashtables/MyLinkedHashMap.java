@@ -63,8 +63,14 @@ public class MyLinkedHashMap<K, V> {
 
 		int hashCode = Math.abs(key.hashCode());
 		int index = hashCode % numBuckets;
-		// System.out.println("key:"+key+" hashcode: "+hashCode +" index: "+index);
 		return index;
 	}
 
+	public void remove(K key) {
+
+		int index = this.getBucketIndex(key);
+		MyLinkedList<K> myLinkedList = this.myBucketArray.get(index);
+		myLinkedList.deleteGivenKeyNode(key);
+
+	}
 }
